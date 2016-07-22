@@ -4,6 +4,13 @@ namespace BandTracker
   {
     private string _location;
     private string _name;
+    public static string table
+    {
+      get
+      {
+        return "venues";
+      }
+    }
     public string location
     {
       get
@@ -26,7 +33,7 @@ namespace BandTracker
         _name = value;
       }
     }
-    public Venue(string Location, string Name)
+    public Venue(string Location, string Name, int Id=0)
     {
       _location = Location;
       _name = Name;
