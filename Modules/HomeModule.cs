@@ -28,6 +28,12 @@ namespace BandTracker
         newVenue.Save();
         return View["venues.cshtml", Venue.GetAll()];
       };
+      Get["/bands/{id}"] = parameters => {
+        return View["band.cshtml", Band.Find(parameters.id)];
+      };
+      Get["/venues/{id}"] = parameters => {
+        return View["venue.cshtml", Venue.Find(parameters.id)];
+      };
     }
   }
 }

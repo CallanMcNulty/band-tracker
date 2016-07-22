@@ -1,0 +1,15 @@
+<h1>@Model.name</h1>
+<p>A @Model.genre Band</p>
+<hr>
+<h3>Shows:</h3>
+<ul>
+  @foreach(var venue in Model.GetVenues())
+  {
+    <li>@venue.location, at <a href="/venues/@venue.id">@venue.name</a></li>
+  }
+</ul>
+<hr>
+<a href="/bands">View All Bands</a>
+<br>
+<br>
+<a href="/">Home</a>
