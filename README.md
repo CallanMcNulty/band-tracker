@@ -6,7 +6,7 @@
 
 ## Description
 
-This web app will access a database of bands and venues. The user can add bands and venues to and retrieve them from the database and view the information of any band or venue. Performances can also be added to the database and viewed in by band or by venue.
+This web app will access a database of bands and venues. The user can add bands and venues to and retrieve them from the database and view, edit and delete the information of any band or venue. Performances can also be added to the database and viewed in by band or by venue.
 
 ## Setup/Installation Requirements
 

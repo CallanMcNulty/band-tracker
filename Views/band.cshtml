@@ -20,6 +20,22 @@
   <button type="submit">Add</button>
 </form>
 <hr>
+<h3>Edit Band Info</h3>
+<form style="display: inline;" action="/bands/@Model[0].id" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="name">Band Name:</label>
+  <input type="text" name="name" value="@Model[0].name">
+  <label for="genre">Music Genre:</label>
+  <input type="text" name="genre" value="@Model[0].genre">
+  <br>
+  <br>
+  <button type="submit">Update</button>
+</form>
+<form style="display: inline;" action="/bands/@Model[0].id" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">Delete Band</button>
+</form>
+<hr>
 <a href="/bands">View All Bands</a>
 <br>
 <br>
