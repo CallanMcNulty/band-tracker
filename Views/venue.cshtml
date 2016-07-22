@@ -1,13 +1,24 @@
-<h1>@Model.name</h1>
-<p>@Model.location</p>
+<h1>@Model[0].name</h1>
+<p>@Model[0].location</p>
 <hr>
 <h3>Performances:</h3>
 <ul>
-  @foreach(var band in Model.GetBands())
+  @foreach(var band in Model[0].GetBands())
   {
-    <li><a href="/venues/@band.id">@band.name</a></li>
+    <li><a href="/bands/@band.id">@band.name</a></li>
   }
 </ul>
+<hr>
+<h3>Add a Performance</h3>
+<form action="/venues/@Model[0].id" method="post">
+  <select name="band">
+    @foreach(var band in Model[1])
+    {
+      <option value="@band.id">@band.name</option>
+    }
+  </select>
+  <button type="submit">Add</button>
+</form>
 <hr>
 <a href="/venues">View All Venues</a>
 <br>

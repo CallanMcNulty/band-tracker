@@ -29,10 +29,21 @@ namespace BandTracker
         return View["venues.cshtml", Venue.GetAll()];
       };
       Get["/bands/{id}"] = parameters => {
-        return View["band.cshtml", Band.Find(parameters.id)];
+        return View["band.cshtml", new List<object> {Band.Find(parameters.id), Venue.GetAll()}];
       };
       Get["/venues/{id}"] = parameters => {
-        return View["venue.cshtml", Venue.Find(parameters.id)];
+        return View["venue.cshtml", new List<object> {Venue.Find(parameters.id), Band.GetAll()}];
+      };
+      Post["/bands/{id}"] = parameters => {
+        Venue selectedVenue = Venue.Find((int)Request.Form["venue"]);
+        Band selectedBand = Band.Find(parameters.id);
+        selectedBand.AddPerformance(selectedVenue.id);
+        return View["band.cshtml", new List<object> {Band.Find(parameters.id), Venue.GetAll()}];
+      };
+      Post["/venues/{id}"] = parameters => {
+        Band selectedBand = Band.Find((int)Request.Form["band"]);
+        selectedBand.AddPerformance(parameters.id);
+        return View["venue.cshtml", new List<object> {Venue.Find(parameters.id), Band.GetAll()}];
       };
     }
   }
