@@ -18,6 +18,16 @@ namespace BandTracker
       Get["/venues"] = _ => {
         return View["venues.cshtml", Venue.GetAll()];
       };
+      Post["/bands"] = _ => {
+        Band newBand = new Band(Request.Form["genre"], Request.Form["name"]);
+        newBand.Save();
+        return View["bands.cshtml", Band.GetAll()];
+      };
+      Post["/venues"] = _ => {
+        Venue newVenue = new Venue(Request.Form["location"], Request.Form["name"]);
+        newVenue.Save();
+        return View["venues.cshtml", Venue.GetAll()];
+      };
     }
   }
 }

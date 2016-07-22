@@ -6,3 +6,14 @@
     <li><a href="/bands/@band.id">@band.name</a></li>
   }
 </ul>
+<hr>
+<h3>Add Band</h3>
+<form action="/bands" method="post">
+  <label for="name">Band Name:</label>
+  <input type="text" name="name">
+  <label for="genre">Music Genre:</label>
+  <input type="text" name="genre">
+  <button type="submit">Add</button>
+</form>
+<hr>
+<a href="/">Home</a>

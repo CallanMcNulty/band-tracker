@@ -6,3 +6,14 @@
     <li><a href="/venues/@venue.id">@venue.name</a></li>
   }
 </ul>
+<hr>
+<h3>Add Venue</h3>
+<form action="/venues" method="post">
+  <label for="name">Venue Name:</label>
+  <input type="text" name="name">
+  <label for="location">Location:</label>
+  <input type="text" name="location">
+  <button type="submit">Add</button>
+</form>
+<hr>
+<a href="/">Home</a>
