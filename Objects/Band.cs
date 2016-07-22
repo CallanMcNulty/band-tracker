@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+
 namespace BandTracker
 {
   public class Band : CRUDObject<Band>
@@ -35,8 +40,15 @@ namespace BandTracker
     }
     public Band( string Genre, string Name, int Id=0)
     {
+      id = Id;
       _genre = Genre;
       _name = Name;
+    }
+    public void AddPerformance(int venueId)
+    {
+      DBObjects dbo = DBObjects.CreateCommand("INSERT INTO performances (band_id, venue_id) VALUES (@Id, @VenueId);", new List<string> {"@Id", "@VenueId"}, new List<object> {id, venueId});
+      dbo.CMD.ExecuteNonQuery();
+      dbo.Close();
     }
   }
 }
