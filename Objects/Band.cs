@@ -50,5 +50,19 @@ namespace BandTracker
       dbo.CMD.ExecuteNonQuery();
       dbo.Close();
     }
+    public List<Venue> GetVenues()
+    {
+      DBObjects dbo = DBObjects.CreateCommand("SELECT venues.* FROM venues JOIN performances ON (venues.id=performances.venue_id) JOIN bands ON (performances.band_id=bands.id) WHERE bands.id=@Id;", new List<string> {"@Id"}, new List<object> {id});
+      SqlDataReader rdr = dbo.RDR;
+      rdr = dbo.CMD.ExecuteReader();
+
+      List<Venue> venues = new List<Venue> {};
+      while(rdr.Read())
+      {
+        venues.Add(new Venue(rdr.GetString(1), rdr.GetString(2), rdr.GetInt32(0)));
+      }
+      dbo.Close();
+      return venues;
+    }
   }
 }

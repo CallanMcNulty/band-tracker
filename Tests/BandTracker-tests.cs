@@ -36,13 +36,22 @@ namespace BandTracker
     [Fact]
     public void Test_GetBands()
     {
-      this.Dispose();
       Venue testVenue = new Venue("123 Fakestreet", "Fakename Center");
       testVenue.Save();
       Band testBand = new Band("Pazz", "Jeff and the Baboons");
       testBand.Save();
       testBand.AddPerformance(testVenue.id);
       Assert.Equal(testBand.id, testVenue.GetBands()[0].id);
+    }
+    [Fact]
+    public void Test_GetVenues()
+    {
+      Venue testVenue = new Venue("123 Fakestreet", "Fakename Center");
+      testVenue.Save();
+      Band testBand = new Band("Pazz", "Jeff and the Baboons");
+      testBand.Save();
+      testBand.AddPerformance(testVenue.id);
+      Assert.Equal(testVenue.id, testBand.GetVenues()[0].id);
     }
     public void Dispose()
     {
