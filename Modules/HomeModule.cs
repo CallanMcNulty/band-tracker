@@ -45,6 +45,16 @@ namespace BandTracker
         selectedBand.AddPerformance(parameters.id);
         return View["venue.cshtml", new List<object> {Venue.Find(parameters.id), Band.GetAll()}];
       };
+      Patch["/venues/{id}"] = parameters => {
+        Venue selectedVenue = Venue.Find(parameters.id);
+        selectedVenue.Update(new List<string> {"name", "location"}, new List<object> {(string)Request.Form["name"], (string)Request.Form["location"]});
+        return View["venue.cshtml", new List<object> {Venue.Find(parameters.id), Band.GetAll()}];
+      };
+      Delete["/venues/{id}"] = parameters => {
+        Venue selectedVenue = Venue.Find(parameters.id);
+        selectedVenue.Delete(new string[] {"performances"}, new string[] {"venue_id"});
+        return View["venues.cshtml", Venue.GetAll()];
+      };
     }
   }
 }

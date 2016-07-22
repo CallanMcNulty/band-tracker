@@ -20,6 +20,22 @@
   <button type="submit">Add</button>
 </form>
 <hr>
+<h3>Edit Venue Info</h3>
+<form style="display: inline;" action="/venues/@Model[0].id" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="name">Venue Name:</label>
+  <input type="text" name="name" value="@Model[0].name">
+  <label for="location">Location:</label>
+  <input type="text" name="location" value="@Model[0].location">
+  <br>
+  <br>
+  <button type="submit">Update</button>
+</form>
+<form style="display: inline;" action="/venues/@Model[0].id" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">Delete Venue</button>
+</form>
+<hr>
 <a href="/venues">View All Venues</a>
 <br>
 <br>
