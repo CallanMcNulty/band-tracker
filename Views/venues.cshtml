@@ -1,0 +1,8 @@
+<h1>Venues</h1>
+<hr>
+<ul>
+  @foreach(var venue in Model)
+  {
+    <li><a href="/venues/@venue.id">@venue.name</a></li>
+  }
+</ul>
